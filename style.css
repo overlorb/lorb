@@ -1,0 +1,178 @@
+
+body{
+    background-color: rgb(101 24 24);
+    color: white;
+    font-family: fangsong;
+    letter-spacing: 6px;
+    text-align: center;
+    margin: 0;
+
+    -webkit-tap-highlight-color: transparent;
+    -moz-user-select: none;
+    user-select: none;
+}
+a, a:visited{
+    color: rgb(61, 6, 6);
+    text-decoration: none;
+}
+#header{
+    display: flex;
+    position: fixed;
+    top:0;
+    width: 100%;
+    font-weight: bold;
+    background-color: rgb(101 24 24);
+}
+
+#content{
+    margin: 110px 0;
+    width: 100%;
+}
+#footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 16px;
+    background-color: rgb(79 15 15);
+    
+}
+#ui{
+    display: none;
+
+}
+#sidebar{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    color: rgb(101 24 24);
+    width: 328px;
+    z-index: 7;
+    padding-top: 64px;
+}
+#sidebar>a{
+    width: 264px;
+    display: block;
+    margin: 32px 16px 32px 32px;
+    text-align: left;
+}
+#overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 6;
+}
+#hamburger, #walletIcon{
+    margin: 16px;
+}
+#hamburger>div{
+    height: 4px;
+    width: 42px;
+    margin: 10px;
+    border-radius: 2px;
+    background-color: white;
+}
+#walletIcon>img{
+    float: right;
+}
+.box{
+    border: 1px solid white;
+    padding: 16px;
+    width: 35%;
+    margin: 32px auto;
+}
+.button{
+    border:2px solid white;
+    width: 35%;
+    padding: 16px;
+    margin: 32px auto;
+    user-select: none;
+    -moz-user-select: none;
+}
+.button:hover{
+    background-color:rgb(139, 19, 19) ;
+    cursor: pointer;
+}
+.br{
+    width: 90%;
+    background-color: rgb(201, 201, 201);
+    height: 1px;
+    margin: 32px auto;
+}
+
+#lobZone{
+    font-family: monospace;
+    letter-spacing: 0;
+    text-align: left;
+    font-size: 0.8vw;
+}
+#socials img{
+    height: 100px;
+}
+.address{
+    width: min-content;
+    background-color: rgb(107, 16, 16);
+    border: 1px solid white;
+    padding: 16px;
+    font-family: monospace;
+    margin: auto;
+    user-select: all;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+}
+.padding{
+    padding: 32px;
+}
+.pointer{cursor: pointer;}
+.flex{
+    display: flex;
+}
+.flex>*{
+    flex: 1;
+}
+
+
+
+h1{
+    font-size: 42px;
+    text-shadow: 0px 2px 1px #777 , 0px -4px 2px #000;
+    font-family: fantasy;
+    font-variant: small-caps;
+    letter-spacing: 0px;
+    margin: 16px 0;
+    color: white;
+}
+p{
+    text-align: left;
+    line-height: 1.5;
+    margin: 16px;
+}
+
+
+@media (orientation: portrait) {
+    .flex{
+        width: 100%;
+        display: initial;
+    }
+    .flex>div{
+        width: 100%;
+    }
+    #lobZone{
+        font-size: 1.9vw;
+    }
+    .box {
+        width: calc(100% - 64px);
+    }
+    .address{
+        
+    font-size: 3vw;
+    letter-spacing: 0;
+    }
+}
