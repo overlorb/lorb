@@ -10,6 +10,7 @@ body{
     -webkit-tap-highlight-color: transparent;
     -moz-user-select: none;
     user-select: none;
+    
 }
 a, a:visited{
     color: rgb(61, 6, 6);
@@ -179,7 +180,7 @@ p{
         width: 100%;
     }
     #lobZone{
-        font-size: 1.9vw;
+        font-size: 1.4vw;
     }
     .box {
         width: calc(100% - 64px);
