@@ -50,6 +50,7 @@ a, a:visited{
     width: 328px;
     z-index: 7;
     padding-top: 64px;
+    overflow-x: auto;
 }
 #sidebar>a{
     width: 264px;
@@ -92,10 +93,23 @@ a, a:visited{
     margin: 32px auto;
     user-select: none;
     -moz-user-select: none;
+
+    
 }
+
 .button:hover{
     background-color:rgb(139, 19, 19) ;
     cursor: pointer;
+
+    -webkit-animation: bob 2s forwards;
+    -moz-animation: bob 2s forwards;
+    -o-animation: bob 2s forwards;
+    animation: bob 2s forwards;
+
+    animation-iteration-count: 1;
+    animation-direction:normal;
+    animation-timing-function:ease-in-out;
+  
 }
 .br{
     width: 90%;
@@ -143,7 +157,7 @@ a, a:visited{
 h1{
     font-size: 42px;
     text-shadow: 0px 2px 1px #777 , 0px -4px 2px #000;
-    font-family: fantasy;
+    font-family: 'Libre Caslon Display', serif;
     font-variant: small-caps;
     letter-spacing: 0px;
     margin: 16px 0;
@@ -176,3 +190,18 @@ p{
     letter-spacing: 0;
     }
 }
+
+
+@-webkit-keyframes bob {
+    0% {
+        transform:rotate3d(0, 0, 0, 0deg);
+    }
+    50% {
+      transform:rotate3d(6, 6.0, 1.0, 360deg);
+    }
+    100% {
+        transform:rotate3d(0, 0, 0, 0deg);
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
