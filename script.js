@@ -1,4 +1,25 @@
 
+        let sidebar=`
+        <a href="./index.html" target="_blank">Home</a>
+        <a href="./swap.html" target="_blank">Swap</a>
+        <a href="./swap.html" target="_blank">Wallet</a>
+        <div class="br"></div>
+        <a href="https://www.leviathanlobstergod.com/" target="_blank">Leviathan Lobster Sermons</a>
+        <a href="https://www.leviathanlobstergod.com/" target="_blank">Holy Order of the Claw</a>
+        <a href="https://holyorderoftheclaw.com/" target="_blank">Holy order Docs</a>
+        <a href="https://www.facebook.com/groups/560665388170838/" target="_blank">Facebook</a>
+        <a href="https://twitter.com/llgllc" target="_blank">Twitter</a>
+        <a href="https://en.wikipedia.org/wiki/Lobster" target="_blank">Discord</a>
+        
+        <div class="br"></div>
+        <a href="https://untamedanimals.com/how-do-lobsters-communicate-can-they-scream/" target="_blank">How do we do it?</a>
+
+        <a href="https://image.shutterstock.com/image-illustration/red-green-growth-graph-600w-47532643.jpg" target="_blank">Financial Model</a>
+        <a href="https://image.shutterstock.com/image-illustration/red-green-growth-graph-600w-47532643.jpg" target="_blank">Charts</a>
+        <a href="https://en.wikipedia.org/wiki/Lobster" target="_blank">Learn More</a>
+        <a href="mailto:contact@lorb.net">Contact Us</a>
+        <a href="https://www.facebook.com/groups/560665388170838/" target="_blank">About Us</a>`
+        document.getElementById("sidebar").innerHTML=sidebar
         function displaySidebar(){
             document.getElementById("ui").style="display:initial"
         }
