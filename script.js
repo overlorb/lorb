@@ -9,7 +9,7 @@
         <a href="https://holyorderoftheclaw.com/" target="_blank">Holy order Docs</a>
         <a href="https://www.facebook.com/groups/560665388170838/" target="_blank">Facebook</a>
         <a href="https://twitter.com/llgllc" target="_blank">Twitter</a>
-        <a href="https://en.wikipedia.org/wiki/Lobster" target="_blank">Discord</a>
+        <a href="https://discord.gg/k8fDSc4PBZ" target="_blank">Discord</a>
         
         <div class="br"></div>
         <a href="https://untamedanimals.com/how-do-lobsters-communicate-can-they-scream/" target="_blank">How do we do it?</a>
