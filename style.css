@@ -3,8 +3,8 @@
 body{
     background-color: rgb(101 24 24);
     color: white;
-    font-family: fangsong;
-    letter-spacing: 6px;
+    font-family: "LORB", monospace;
+    letter-spacing: 4px;
     text-align: center;
     margin: 0;
 
@@ -159,16 +159,14 @@ a, a:visited{
 
 
 h1{
-    font-size: 42px;
-    text-shadow: 0px 2px 1px #777 , 0px -4px 2px #000;
-    font-family: 'Shippori Antique B1', sans-serif;
-    font-variant: small-caps;
-    letter-spacing: 0px;
-    margin: 5px 0;
+    font-size: 46px;
+    font-family: "LORB", monospace;
+    font-weight: 100;
+    margin: 14px 0;
     color: white;
 }
 h2,h3{
-    font-family: 'Shippori Antique B1', sans-serif;
+    font-family: "LORB", monospace;
     font-variant: small-caps;
     font-weight: 400;
 }
@@ -178,6 +176,11 @@ p{
     margin: 16px;
 }
 
+
+@font-face {
+	font-family: LORB;
+	src: url(./px10.ttf);
+}
 
 @media (orientation: portrait) {
     .flex{
