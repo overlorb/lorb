@@ -223,7 +223,8 @@ p{
 
 @media (orientation: portrait) {
     #intro{
-    width: 94%;
+    width: 100%;
+	    margin-bottom: 100vh;
 
     }
     .flex{
