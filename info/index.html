@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LORBNET</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+        .category.community {
+            left: 16px;
+            top: 100px;
+            bottom: 48px;
+            right: 30%;
+        }
+
+        .category.team {
+            left: 70%;
+            top: 100px;
+            bottom: 50%;
+            right: 16px;
+        }
+
+        .category.sale {
+            left: 70%;
+            top: 50%;
+            bottom: 48px;
+            right: 16px;
+        }
+
+        .category.airdrops {
+            left: 40%;
+            right: 0%;
+            top: 0;
+            bottom: 30%;
+
+        }
+
+        .category.contests {
+            left: 0;
+            right: 0;
+            top: 70%;
+            bottom: 0;
+        }
+
+        .category.marketing {
+            right: 60%;
+            left: 0;
+            top: 0;
+            bottom: 65%;
+        }
+
+        .category.administration {
+            right: 60%;
+            left: 0;
+            top: 35%;
+            bottom: 45%;
+        }
+
+        .category.other {
+            right: 60%;
+            left: 0;
+            top: 55%;
+            bottom: 30%;
+        }
+
+        .category.development {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 65%;
+        }
+
+        .category.management {
+            left: 0;
+            right: 0;
+            top: 35%;
+            bottom: 30%;
+        }
+
+        .category.art {
+            left: 0;
+            right: 0;
+            top: 70%;
+            bottom: 0;
+        }
+        .category.dex {
+            left: 0;
+            right: 35%;
+            top: 0;
+            bottom: 0;
+        }
+        .category.exchange {
+            left: 65%;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        .category.airdrops-facebook {
+            left: 0;
+            right: 0;
+            top: 50%;
+            bottom: 0;
+            margin-top: 16px;
+        }
+
+        .category.airdrops-twitter {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 50%;
+            margin-bottom: 16px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ui">
+        <div id="sidebar" class="glass">
+        </div>
+        <div id="overlay" onclick="hideSidebar()"></div>
+    </div>
+    <div id="header" class="flex glass">
+        <div id="hamburger" class="pointer" onclick="displaySidebar()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <a href="../index.html">
+            <h1>LORBNET</h1>
+        </a>
+        <div id="walletIcon" class="pointer" onclick="document.location.href='../swap.html'">
+            <img src="../assets/icons/wallet.png" />
+        </div>
+    </div>
+    <div id="content">
+        <div id="breakdown">
+            <div class="category community">
+                <div class="label">Communuty</div>
+                <div class="category glass airdrops">
+                    <div class="label">
+                        Airdrops
+                        <div class="subLabel">
+                            300,000,000,000,000 LORB<br><br>
+                            30%
+                        </div>
+                    </div>
+
+                    <div class="category glass airdrops-facebook">
+                        <div class="label">
+                            Facebook Planning Commission
+                            <br>Airdrop
+
+                        </div>
+                    </div>
+                    <div class="category glass airdrops-twitter">
+                        <div class="label">Twitter Follow Airdrop</div>
+                    </div>
+                </div>
+                <div class="category glass contests">
+                    <div class="label">
+                        Contests
+                        <div class="subLabel">
+                            200,000,000,000,000 LORB<br><br>
+                            20%
+                        </div>
+                    </div>
+                </div>
+                <div class="category glass marketing">
+                    <div class="label">
+                        Marketing
+                        <div class="subLabel">
+                            100,000,000,000,000 LORB<br><br>
+                            10%
+                        </div>
+                    </div>
+                </div>
+                <div class="category glass administration">
+                    <div class="label">Administration
+                        <div class="subLabel">
+                            60,000,000,000,000 LORB<br><br>
+                            6%
+                        </div>
+                    </div>
+                </div>
+                <div class="category glass other">
+                    <div class="label">Games
+                        <div class="subLabel">
+                            40,000,000,000,000 LORB<br><br>
+                            4%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="category team">
+                <div class="label">
+                    Team
+
+                    <!-- <div class="subLabel">
+                        150,000,000,000,000 LORB<br><br>
+                        15%
+                    </div> -->
+                </div>
+                <div class="category sub1 glass development">
+                    <div class="label">
+                        Development
+                        <div class="subLabel">
+                            60,000,000,000,000 LORB<br><br>
+                            6%
+                        </div>
+
+                    </div>
+                </div>
+                <div class="category glass management p40">
+                    <div class="label">
+                        Management
+                        <div class="subLabel">
+                            40,000,000,000,000 LORB<br><br>
+                            4%
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="category glass art">
+                    <div class="label">
+                        Art
+
+                        <div class="subLabel">
+                            50,000,000,000,000 LORB<br><br>
+                            5%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="category sale">
+                <div class="label">Sale</div>
+                <div class="category glass dex">
+                    <div class="label">
+                        Dex Liquidity
+                        <div class="subLabel">
+                            100,000,000,000,000 LORB<br><br>
+                            10%
+                        </div>
+                    </div>
+                </div>
+                <div class="category glass exchange">
+                    <div class="label">
+                        Exchange
+                        <div class="subLabel">
+                            5%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="glass">
+        Copyright 2021 In Lorb We Trust
+    </div>
+    <div class="background">
+        <img src="../assets/art/cradam.png">
+    </div>
+    <div class="mobile background">
+        <img
+            src="../assets/art/vertical/BOZO_lobster_claw_lobster_god_halo_classical_heaven_michelangel_18606149-869e-4759-b0bd-a78cd9d4d39b.png">
+    </div>
+    <script src="../script.js">
+    </script>
+</body>
+
+</html>

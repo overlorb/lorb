@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LORBNET</title>
     <link rel="stylesheet" href="./style.css" />
+    
 </head>
 <body>
     <div id="ui">
@@ -25,8 +26,48 @@
         </div>
     </div>
     <div id="content">
-        <h2>LORB PRICE</h2> 
-        <p class="center">$0.000000001891328 USD</p>
+        <div class="opaque box">
+            <h2>LORB PRICE</h2> 
+            <p id="price" class="center">$0.00000000715 USD</p>
+        </div>
+        <div class="glass box">
+            <h2>Swap</h2>
+            <div>
+                <input id="swapInput" placeholder="swap amount" value="1.0" type="number" oninput="lorb.getQuote()">
+                <select id="inputSelect" onchange="lorb.getQuote()">
+                    <option value="USD">
+                        USD
+                    </option>
+                    <option value="ETH">
+                        ETH
+                    </option>
+                </select>
+            </div>
+            <div>
+                ▼
+            </div>
+            <div>
+                <input id="swapOutput" placeholder="swap amount" value="1.0">
+                <select>
+                    <option>
+                        <div>
+                            LORB
+                        </div>
+                    </option>
+                </select>
+            </div>
+            <div class="button glass" onclick="window.location='https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0x5C173A51468694C0114aad0c14cbEA350f40C33e'">Swap</div>
+            <div class="br"></div>
+            <h2>Add token to wallet</h2>
+            <div class="button glass" onclick="addToken()">ADD TOKEN</div>
+        </div>
+        <div class="glass box">
+            <h2>Info</h2>
+            <div class="button" onclick="document.location.href='https://etherscan.io/token/0x5c173a51468694c0114aad0c14cbea350f40c33e'">Token Tracker</div>
+            <div class="button" onclick="document.location.href='https://thebittimes.com/token-LORB-ETH-0x5c173a51468694c0114aad0c14cbea350f40c33e.html'">The Bit Times</div>
+            <div class="button" onclick="document.location.href='https://app.uniswap.org/#/pools/182373'">Liquidity Pool</div>
+
+        </div>
         <div class="box glass">
             <div>
                 <h2>Ethereum Mainnet LORB</h2>
@@ -40,7 +81,16 @@
                 <div class="address">0x5c173a51468694c0114aad0c14cbea350f40c33e</div>
                 <div class="br"></div>
                 
+                <h3>Info</h3>
+                <div class="button" onclick="document.location.href='https://etherscan.io/token/0x5c173a51468694c0114aad0c14cbea350f40c33e'">Token Tracker</div>
+                <div class="button" onclick="document.location.href='https://thebittimes.com/token-LORB-ETH-0x5c173a51468694c0114aad0c14cbea350f40c33e.html'">The Bit Times</div>
+                <div class="button" onclick="document.location.href='https://app.uniswap.org/#/pools/182373'">Liquidity Pool</div>
+
+                <div class="br"></div>
+                
                 <h3>Swap</h3>
+                <div class="button" onclick="document.location.href='https://www.coinbase.com/price/leviathan-lobster-token'">Swap on Coinbase</div>
+                <div class="button" onclick="document.location.href='https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0x5C173A51468694C0114aad0c14cbEA350f40C33e'">Swap on Uniswap</div>
                 <div class="button" onclick="document.location.href='https://app.1inch.io/#/1/classic/swap/ETH/0x5c173a51468694c0114aad0c14cbea350f40c33e'">Swap on 1inch</div>
                 <div class="button" onclick="document.location.href='https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0x5C173A51468694C0114aad0c14cbEA350f40C33e'">Swap on Sushi</div>
 
@@ -63,6 +113,7 @@
                 <div class="button" onclick="document.location.href='https://app.sushi.com/swap?inputCurrency=0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619&outputCurrency=0x5C173A51468694C0114aad0c14cbEA350f40C33e'">Swap on Sushi</div>
             </div>
         </div>
+        <div class="button glass" onclick="addToken()">ADD TOKEN</div>
         <div class="button glass" onclick="document.location.href='./index.html'">Home</div>
     </div>
     <div id="footer" class="glass">
@@ -72,6 +123,42 @@
 		<img src="assets/art/BOZO_money_dollar_lobster_claw_lobster_god_classical_heaven_137f1127-e8f6-4f55-a644-2c78e69031d2.png" >
 	</div>
     <script src="script.js">
+    </script>
+    <script src="ethers.js">
+    </script>
+    <script>
+        lorb.getPrice();
+        lorb.getQuote();
+        async function addToken(){
+            const tokenAddress = '0x5c173a51468694c0114aad0c14cbea350f40c33e';
+            const tokenSymbol = 'LORB';
+            const tokenDecimals = 18;
+            const tokenImage = 'https://lorb.net/assets/art/BOZO_gold_coins_lobster_claw_lobster_god_classical_heaven_68f0592f-5d09-4012-984a-6025e2d422ed.png';
+
+            try {
+            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+            const wasAdded = await ethereum.request({
+                    method: 'wallet_watchAsset',
+                    params: {
+                    type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                    options: {
+                        address: tokenAddress, // The address that the token is at.
+                        symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+                        decimals: tokenDecimals, // The number of decimals in the token
+                        image: tokenImage, // A string url of the token logo
+                    },
+                    },
+                });
+
+                if (wasAdded) {
+                    console.log('Thanks for your interest!');
+                } else {
+                    console.log('Your loss!');
+                }
+            } catch (error) {
+            console.log(error);
+            }
+        }
     </script>
 </body>
 </html>
