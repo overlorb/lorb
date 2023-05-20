@@ -310,37 +310,6 @@ p{
 	src: url(./px10.ttf);
 }
 
-@media (orientation: portrait) {
-    #intro{
-    width: 94%;
-
-    }
-    .flex{
-        width: 100%;
-        display: initial;
-    }
-    #lobZone{
-        font-size: 1.9vw;
-    }
-    .box {
-        width: calc(100% - 64px);
-    }
-    .address{
-        
-    font-size: 3vw;
-    letter-spacing: 0;
-    }
-    #footer{
-        letter-spacing: 1;
-    }
-    .mobile{
-        display: initial;
-    }
-    .desktop{
-        display: none;
-    }
-}
-
 
 @-webkit-keyframes introGrow {
     from {
@@ -439,3 +408,54 @@ p{
     }
 }
 
+@media (orientation: portrait) {
+    #intro{
+    width: 94%;
+
+    }
+    .flex{
+        width: 100%;
+        display: initial;
+    }
+    #lobZone{
+        font-size: 1.9vw;
+    }
+    .box {
+        width: calc(100% - 64px);
+    }
+    .address{
+        
+    font-size: 3vw;
+    letter-spacing: 0;
+    }
+    #footer{
+        letter-spacing: 1;
+    }
+    
+    
+    @-webkit-keyframes categorySub1Intro {
+        
+        0% {
+            opacity: 0;
+            margin: 0;
+        }
+        50%{
+            opacity: 0;
+            margin: 0;
+        }
+        100% {
+            opacity: 1;
+            margin: 5px;
+            font-size: 16px;
+        }
+    }
+
+
+    .mobile{
+        display: initial;
+    }
+    .desktop{
+        display: none;
+    }
+    
+}
