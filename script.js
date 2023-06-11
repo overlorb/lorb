@@ -1,5 +1,4 @@
-
-  let sidebar=`
+let sidebar = `
   <a href="./index.html" target="_blank">Home</a>
   <a href="./swap.html" target="_blank">Swap</a>
   <a href="./swap.html" target="_blank">Wallet</a>
@@ -8,7 +7,7 @@
   <a href="https://www.leviathanlobstergod.com/" target="_blank">Holy Order of the Claw</a>
   <a href="https://holyorderoftheclaw.com/" target="_blank">Holy order Docs</a>
   <a href="https://www.facebook.com/groups/560665388170838/" target="_blank">Facebook</a>
-  <a href="https://twitter.com/llgllc" target="_blank">Twitter</a>
+  <a href="https://twitter.com/BankOfTheClaw" target="_blank">Twitter</a>
   <a href="https://en.wikipedia.org/wiki/Lobster" target="_blank">Discord</a>
   
   <div class="br"></div>
@@ -18,16 +17,16 @@
   <a href="https://image.shutterstock.com/image-illustration/red-green-growth-graph-600w-47532643.jpg" target="_blank">Charts</a>
   <a href="https://en.wikipedia.org/wiki/Lobster" target="_blank">Learn More</a>
   <a href="mailto:contact@lorb.net">Contact Us</a>
-  <a href="https://www.facebook.com/groups/560665388170838/" target="_blank">About Us</a>`
-  document.getElementById("sidebar").innerHTML=sidebar
-  function displaySidebar(){
-      document.getElementById("ui").style="display:initial"
-  }
-  function hideSidebar(){
-      document.getElementById("ui").style="display:none"
-  }
- 
-        let lob1=`
+  <a href="https://www.facebook.com/groups/560665388170838/" target="_blank">About Us</a>`;
+document.getElementById("sidebar").innerHTML = sidebar;
+function displaySidebar() {
+  document.getElementById("ui").style = "display:initial";
+}
+function hideSidebar() {
+  document.getElementById("ui").style = "display:none";
+}
+
+let lob1 = `
       ████████                                                                                  
       ██░░░░░░████                                                        ▓▓▓▓▓▓                
         ████▒▒▒▒░░████                                              ▓▓▓▓▓▓                      
@@ -58,282 +57,321 @@
                               ██▒▒██                ██░░▒▒██    ████████                        
                             ██▒▒██                    ████▒▒██                                  
                             ████                          ████                                  
-                            `
-// for(c in lob1){document.getElementById("lobZone").innerHTML+=(lob1[c]==" ")?"&nbsp":(lob1[c]=="!"?"<br>":lob1[c])}
-//for(c in lob2){document.getElementById("lobZone").innerHTML+=(lob2[c]==" ")?"&nbsp":(lob2[c]=="!"?"<br>":lob2[c])}
-
-
-console.log(lob1)
-
-//document.getElementById("lobZone").innerHTML=lob1
-// lobZone             
-//let priceData=await fetch("https://api.1inch.io/v4.0/1/quote?fromTokenAddress=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48&toTokenAddress=0x5c173a51468694c0114aad0c14cbea350f40c33e&amount=1000000")
-//priceData=await priceData.json()
-//console.log(priceData.toTokenAmount)
+                            `;
+console.log(lob1);
 
 const rpcUrls = {
-  ethereum: 'https://mainnet.infura.io/v3/6cac2ad604be45b298c9af77e9112e3e',
-  polygon: 'https://polygon.infura.io',
-  xdai: 'https://xdai.infura.io'
-}
+  ethereum: "https://mainnet.infura.io/v3/6cac2ad604be45b298c9af77e9112e3e",
+  polygon: "https://polygon.infura.io",
+  xdai: "https://xdai.infura.io",
+};
 
 const slugToChainId = {
   ethereum: 1,
   polygon: 137,
-  xdai: 100
-}
+  xdai: 100,
+};
 
 const tokenDecimals = {
   USDC: 6,
   LORB: 18,
-  ETH: 18
-}
+  ETH: 18,
+};
 
 const addresses = {
   ethereum: {
-    LORB: '0x5c173a51468694c0114aad0c14cbea350f40c33e',
-    USD: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-    ETH: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+    LORB: "0x5c173a51468694c0114aad0c14cbea350f40c33e",
+    USD: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    ETH: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
   },
   polygon: {
-    USDC: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
-    ETH: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619'
+    USDC: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+    ETH: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
   },
   xdai: {
-    USDC: '0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83',
-    ETH: '0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1'
-  }
-}
+    USDC: "0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83",
+    ETH: "0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1",
+  },
+};
 
 class OneInch {
-  constructor () {
-    this.baseUrl = 'https://api.1inch.exchange/v4.0'
+  constructor() {
+    this.baseUrl = "https://api.1inch.exchange/v4.0";
   }
 
-  async getQuote (config) {
-    const { chainId, fromTokenAddress, toTokenAddress, amount } = config
+  async getQuote(config) {
+    const { chainId, fromTokenAddress, toTokenAddress, amount } = config;
     if (!chainId) {
-      throw new Error('chainId is required')
+      throw new Error("chainId is required");
     }
     if (!fromTokenAddress) {
-      throw new Error('fromTokenAddrss is required')
+      throw new Error("fromTokenAddrss is required");
     }
     if (!toTokenAddress) {
-      throw new Error('toTokenAddress is required')
+      throw new Error("toTokenAddress is required");
     }
     if (!amount) {
-      throw new Error('amount is required')
+      throw new Error("amount is required");
     }
-    const url = `${this.baseUrl}/${chainId}/quote?fromTokenAddress=${fromTokenAddress}&toTokenAddress=${toTokenAddress}&amount=${amount}`
-    const result = await this.getJson(url)
+    const url = `${this.baseUrl}/${chainId}/quote?fromTokenAddress=${fromTokenAddress}&toTokenAddress=${toTokenAddress}&amount=${amount}`;
+    const result = await this.getJson(url);
     if (!result.toTokenAmount) {
-      console.log(result)
-      throw new Error('expected tx data')
+      console.log(result);
+      throw new Error("expected tx data");
     }
 
-    const { toTokenAmount } = result
+    const { toTokenAmount } = result;
 
-    return toTokenAmount
+    return toTokenAmount;
   }
 
-  async getAllowance (config) {
-    const { chainId, tokenAddress, walletAddress } = config
+  async getAllowance(config) {
+    const { chainId, tokenAddress, walletAddress } = config;
     if (!chainId) {
-      throw new Error('chainId is required')
+      throw new Error("chainId is required");
     }
     if (!tokenAddress) {
-      throw new Error('tokenAddress required')
+      throw new Error("tokenAddress required");
     }
     if (!walletAddress) {
-      throw new Error('walletAddress is required')
+      throw new Error("walletAddress is required");
     }
 
-    const url = `${this.baseUrl}/${chainId}/approve/allowance?tokenAddress=${tokenAddress}&walletAddress=${walletAddress}`
-    const result = await this.getJson(url)
+    const url = `${this.baseUrl}/${chainId}/approve/allowance?tokenAddress=${tokenAddress}&walletAddress=${walletAddress}`;
+    const result = await this.getJson(url);
     if (result.allowance === undefined) {
-      console.log(result)
-      throw new Error('expected tx data')
+      console.log(result);
+      throw new Error("expected tx data");
     }
 
-    return result.allowance
+    return result.allowance;
   }
 
-  async getApproveTx (config) {
-    const { chainId, tokenAddress, amount } = config
+  async getApproveTx(config) {
+    const { chainId, tokenAddress, amount } = config;
     if (!chainId) {
-      throw new Error('chainId is required')
+      throw new Error("chainId is required");
     }
     if (!tokenAddress) {
-      throw new Error('tokenAddress required')
+      throw new Error("tokenAddress required");
     }
     if (!amount) {
-      throw new Error('amount is required')
+      throw new Error("amount is required");
     }
 
-    const url = `${this.baseUrl}/${chainId}/approve/transaction?&amount=${amount}&tokenAddress=${tokenAddress}`
-    const result = await this.getJson(url)
+    const url = `${this.baseUrl}/${chainId}/approve/transaction?&amount=${amount}&tokenAddress=${tokenAddress}`;
+    const result = await this.getJson(url);
     if (!result.data) {
-      console.log(result)
-      throw new Error('expected tx data')
+      console.log(result);
+      throw new Error("expected tx data");
     }
 
-    const { data, to, value } = result
+    const { data, to, value } = result;
 
     return {
       data,
       to,
-      value
-    }
+      value,
+    };
   }
 
-  async getSwapTx (config) {
-    const { chainId, fromTokenAddress, toTokenAddress, fromAddress, amount, slippage } = config
+  async getSwapTx(config) {
+    const {
+      chainId,
+      fromTokenAddress,
+      toTokenAddress,
+      fromAddress,
+      amount,
+      slippage,
+    } = config;
     if (!chainId) {
-      throw new Error('chainId is required')
+      throw new Error("chainId is required");
     }
     if (!fromTokenAddress) {
-      throw new Error('fromTokenAddrss is required')
+      throw new Error("fromTokenAddrss is required");
     }
     if (!toTokenAddress) {
-      throw new Error('toTokenAddress is required')
+      throw new Error("toTokenAddress is required");
     }
     if (!fromAddress) {
-      throw new Error('fromAddress is required')
+      throw new Error("fromAddress is required");
     }
     if (!amount) {
-      throw new Error('amount is required')
+      throw new Error("amount is required");
     }
     if (!slippage) {
-      throw new Error('slippage is required')
+      throw new Error("slippage is required");
     }
-    const url = `${this.baseUrl}/${chainId}/swap?fromTokenAddress=${fromTokenAddress}&toTokenAddress=${toTokenAddress}&amount=${amount}&fromAddress=${fromAddress}&slippage=${slippage}`
-    const result = await this.getJson(url)
+    const url = `${this.baseUrl}/${chainId}/swap?fromTokenAddress=${fromTokenAddress}&toTokenAddress=${toTokenAddress}&amount=${amount}&fromAddress=${fromAddress}&slippage=${slippage}`;
+    const result = await this.getJson(url);
     if (!result.tx) {
-      console.log(result)
-      throw new Error('expected tx data')
+      console.log(result);
+      throw new Error("expected tx data");
     }
 
-    const { data, to, value } = result.tx
+    const { data, to, value } = result.tx;
 
     return {
       data,
       to,
-      value
-    }
+      value,
+    };
   }
 
-  async getJson (url) {
-    const res = await fetch(url)
-    const json = await res.json()
+  async getJson(url) {
+    const res = await fetch(url);
+    const json = await res.json();
     if (!json) {
-      throw new Error('no response')
+      throw new Error("no response");
     }
     if (json.error) {
-      console.log(json)
-      throw new Error(json.description || json.error)
+      console.log(json);
+      throw new Error(json.description || json.error);
     }
 
-    return json
+    return json;
   }
 }
 
-
 let lorb = {
-  tokenAddress:"0x5c173a51468694c0114aad0c14cbea350f40c33e",
-  price:0,
-  routerAddress:"0x1111111254EEB25477B68fb85Ed929f73A960582",
-  async getPrice(){
-    
+  tokenAddress: "0x5c173a51468694c0114aad0c14cbea350f40c33e",
+  price: 0,
+  routerAddress: "0x1111111254EEB25477B68fb85Ed929f73A960582",
+  async getPrice() {
     // const contract = await new ethers.Contract(uniswapUsdcAddress, uniswapAbi, provider);
     // let slot0 = await contract.slot0()
     // let sqrtPriceX96 = await slot0.sqrtPriceX96;
     // return sqrtPriceX96 ** 2 / 2 ** 192
-    
-    let fet = await fetch( `https://api.1inch.io/v5.0/1/quote?fromTokenAddress=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48&toTokenAddress=0x5c173a51468694c0114aad0c14cbea350f40c33e&amount=${1000000}`)
-    let fetText = await fet.text()
-    
-    document.getElementById("price").innerHTML=`$${(1/(JSON.parse(fetText).toTokenAmount / 1000000000000000000)).toFixed(11).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")} USD`;
 
+    let fet = await fetch(
+      `https://api.1inch.io/v5.0/1/quote?fromTokenAddress=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48&toTokenAddress=0x5c173a51468694c0114aad0c14cbea350f40c33e&amount=${1000000}`
+    );
+    let fetText = await fet.text();
+
+    document.getElementById("price").innerHTML = `$${(
+      1 /
+      (JSON.parse(fetText).toTokenAmount / 1000000000000000000)
+    )
+      .toFixed(11)
+      .toString()
+      .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")} USD`;
   },
-  setupSwap(){
-    
+  setupSwap() {
     if (window.ethereum) {
       var provider = new ethers.providers.Web3Provider(ethereum);
       var signer = provider.getSigner();
-      ethereum.enable()
+      ethereum.enable();
     }
-    this.getPrice()
+    this.getPrice();
   },
-  async approve(){
-    let amount = document.getElementById("")
-    var tokenContract = new ethers.Contract(lorb.tokenAddress, lorb.tokenABI, provider);
-    tokenContract.approve(lorb.routerAddress, amount, {gasLimit: gasLimit})
+  async approve() {
+    let amount = document.getElementById("");
+    var tokenContract = new ethers.Contract(
+      lorb.tokenAddress,
+      lorb.tokenABI,
+      provider
+    );
+    tokenContract.approve(lorb.routerAddress, amount, { gasLimit: gasLimit });
   },
   async swap() {
-    const chain = 'ethereum'
-    const rpcUrl = rpcUrls[chain]
-    const provider = new ethers.providers.StaticJsonRpcProvider(rpcUrl)
-    
+    const chain = "ethereum";
+    const rpcUrl = rpcUrls[chain];
+    const provider = new ethers.providers.StaticJsonRpcProvider(rpcUrl);
+
     let wallet = new ethers.providers.Web3Provider(window.ethereum);
     // console.log(bitprint)
-    const oneInch = new OneInch()
-    
-    const chainId = slugToChainId[chain]
-    const fromToken = document.getElementById('inputSelect').value
-    const toToken = 'LORB'
-    const slippage = 1
-    console.log(wallet)
-    const walletAddress = wallet.provider.selectedAddress
-    const formattedAmount = document.getElementById('swapInput').value
-    const amount = ethers.utils.parseUnits(formattedAmount, tokenDecimals[fromToken]).toString()
-  
-    console.log('chain:', chain)
-    console.log('fromToken:', fromToken)
-    console.log('toToken:', toToken)
-    console.log('amount:', formattedAmount)
-  
-    const fromTokenAddress = addresses[chain][fromToken]
-    const toTokenAddress = addresses[chain][toToken]
-    const toTokenAmount = await oneInch.getQuote({ chainId, fromTokenAddress, toTokenAddress, amount })
-    const toTokenAmountFormatted = ethers.utils.formatUnits(toTokenAmount, tokenDecimals[toToken])
-    console.log(`toTokenAmount: ${toTokenAmountFormatted}`)
-  
-    const tokenAddress = fromTokenAddress
-    const allowance = await oneInch.getAllowance({ chainId, tokenAddress, walletAddress })
-    console.log('allowance:', allowance)
-    try{
-    if (ethers.BigNumber.from(allowance).lt(amount)) {
-      const txData = await oneInch.getApproveTx({ chainId, tokenAddress, amount })
-      console.log('approval data:', txData)
-  
-      const tx = await wallet.sendTransaction(txData)
-      console.log('approval tx:', tx.hash)
-      await tx.wait()
-    }
-  }
-    catch(e){
-      console.trace(e)
-    }
-  
-    const fromAddress = walletAddress
-    const txData = await oneInch.getSwapTx({ chainId, fromTokenAddress, toTokenAddress, fromAddress, amount, slippage })
-    console.log('swap data:', txData)
-    const tx = await wallet.sendTransaction(txData)
-    console.log('swap tx:', tx.hash)
-    await tx.wait()
-  
-    console.log('done')
-  },
-  quoteEndpoint(){
-    return `https://api.1inch.io/v5.0/1/quote?fromTokenAddress=${addresses[document.getElementById('inputSelect').value]}&toTokenAddress=0x5c173a51468694c0114aad0c14cbea350f40c33e&amount=10000020000000000`
-  },
-  async getQuote(){
-    let fet = await fetch( `https://api.1inch.io/v5.0/1/quote?fromTokenAddress=${addresses.ethereum[document.getElementById('inputSelect').value]}&toTokenAddress=0x5c173a51468694c0114aad0c14cbea350f40c33e&amount=${document.getElementById("swapInput").value * 1000000000000000000}`)
-    let fetText = await fet.text()
-    
+    const oneInch = new OneInch();
 
-    document.getElementById("swapOutput").value=(JSON.parse(fetText).toTokenAmount / 1000000000000000000).toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    const chainId = slugToChainId[chain];
+    const fromToken = document.getElementById("inputSelect").value;
+    const toToken = "LORB";
+    const slippage = 1;
+    console.log(wallet);
+    const walletAddress = wallet.provider.selectedAddress;
+    const formattedAmount = document.getElementById("swapInput").value;
+    const amount = ethers.utils
+      .parseUnits(formattedAmount, tokenDecimals[fromToken])
+      .toString();
 
-  }
-  
-}
+    console.log("chain:", chain);
+    console.log("fromToken:", fromToken);
+    console.log("toToken:", toToken);
+    console.log("amount:", formattedAmount);
+
+    const fromTokenAddress = addresses[chain][fromToken];
+    const toTokenAddress = addresses[chain][toToken];
+    const toTokenAmount = await oneInch.getQuote({
+      chainId,
+      fromTokenAddress,
+      toTokenAddress,
+      amount,
+    });
+    const toTokenAmountFormatted = ethers.utils.formatUnits(
+      toTokenAmount,
+      tokenDecimals[toToken]
+    );
+    console.log(`toTokenAmount: ${toTokenAmountFormatted}`);
+
+    const tokenAddress = fromTokenAddress;
+    const allowance = await oneInch.getAllowance({
+      chainId,
+      tokenAddress,
+      walletAddress,
+    });
+    console.log("allowance:", allowance);
+    try {
+      if (ethers.BigNumber.from(allowance).lt(amount)) {
+        const txData = await oneInch.getApproveTx({
+          chainId,
+          tokenAddress,
+          amount,
+        });
+        console.log("approval data:", txData);
+
+        const tx = await wallet.sendTransaction(txData);
+        console.log("approval tx:", tx.hash);
+        await tx.wait();
+      }
+    } catch (e) {
+      console.trace(e);
+    }
+
+    const fromAddress = walletAddress;
+    const txData = await oneInch.getSwapTx({
+      chainId,
+      fromTokenAddress,
+      toTokenAddress,
+      fromAddress,
+      amount,
+      slippage,
+    });
+    console.log("swap data:", txData);
+    const tx = await wallet.sendTransaction(txData);
+    console.log("swap tx:", tx.hash);
+    await tx.wait();
+
+    console.log("done");
+  },
+  quoteEndpoint() {
+    return `https://api.1inch.io/v5.0/1/quote?fromTokenAddress=${
+      addresses[document.getElementById("inputSelect").value]
+    }&toTokenAddress=0x5c173a51468694c0114aad0c14cbea350f40c33e&amount=10000020000000000`;
+  },
+  async getQuote() {
+    let fet = await fetch(
+      `https://api.1inch.io/v5.0/1/quote?fromTokenAddress=${
+        addresses.ethereum[document.getElementById("inputSelect").value]
+      }&toTokenAddress=0x5c173a51468694c0114aad0c14cbea350f40c33e&amount=${
+        document.getElementById("swapInput").value * 1000000000000000000
+      }`
+    );
+    let fetText = await fet.text();
+
+    document.getElementById("swapOutput").value = (
+      JSON.parse(fetText).toTokenAmount / 1000000000000000000
+    )
+      .toFixed(2)
+      .toString()
+      .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  },
+};
