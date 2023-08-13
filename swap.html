@@ -36,13 +36,10 @@
         <div class="glass box">
             <h2>Swap</h2>
             <div>
-                <input id="swapInput" placeholder="swap amount" value="1.0" type="number" oninput="lorb.getQuote()">
-                <select id="inputSelect" onchange="lorb.getQuote()">
+                <input id="swapInput" placeholder="swap amount" value="1.0" type="number" oninput="lorb.findRoute()">
+                <select id="inputSelect" onchange="lorb.findRoute()">
                     <option value="USD">
                         USD
-                    </option>
-                    <option value="ETH">
-                        ETH
                     </option>
                 </select>
             </div>
@@ -62,7 +59,7 @@
             <div class="button glass" onclick="window.location='https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0x5C173A51468694C0114aad0c14cbEA350f40C33e'">Swap</div>
             <div class="br"></div>
             <h2>Add token to wallet</h2>
-            <div class="button glass" onclick="addToken()">ADD TOKEN</div>
+            <div class="button glass" onclick="addToken()">ADD TOKEN TO WALLET</div>
         </div>
         <div class="glass box">
             <h2>Info</h2>
@@ -117,8 +114,9 @@
                 <div class="button" onclick="document.location.href='https://app.1inch.io/#/137/classic/swap/MATIC/0x5c173a51468694c0114aad0c14cbea350f40c33e'">Swap on 1inch</div>
                 <div class="button" onclick="document.location.href='https://app.sushi.com/swap?inputCurrency=0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619&outputCurrency=0x5C173A51468694C0114aad0c14cbEA350f40C33e'">Swap on Sushi</div>
             </div>
-        </div>
-        <div class="button glass" onclick="addToken()">ADD TOKEN</div>
+        </div>            
+        <div class="button glass" onclick="addToken()">ADD TOKEN TO WALLET</div>
+
         <div class="button glass" onclick="document.location.href='./index.html'">Home</div>
     </div>
     <div id="footer" class="glass">
@@ -132,8 +130,18 @@
     <script src="ethers.js">
     </script>
     <script>
-        lorb.getPrice();
-        lorb.getQuote();
+        // lorb.getPrice();
+        // lorb.getQuote();
+        for(t in addresses.ethereum){
+            if(t != "LORB" && t!= "USD"){
+            document.getElementById('inputSelect').innerHTML+=`
+                    <option value="${t}">
+                        ${t}
+                    </option>
+            `
+                }
+        }
+        lorb.findRoute();
         async function addToken(){
             const tokenAddress = '0x5c173a51468694c0114aad0c14cbea350f40c33e';
             const tokenSymbol = 'LORB';

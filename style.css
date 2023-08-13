@@ -14,7 +14,7 @@ body{
     letter-spacing: 1px;
     text-align: center;
     margin: 0;
-    font-size: 16px;
+    font-size: large;
 
     -webkit-tap-highlight-color: transparent;
     -moz-user-select: none;
@@ -263,15 +263,16 @@ input, select{
 
 }
 
-#breakdown>.category>.category:hover{
-    background: none;
-
-    font-size: 0;
+#breakdown>.category>.fade:hover{
+    background: transparent;
+    cursor: pointer;
 
 }
-#breakdown>.category>.category:hover>.label, #breakdown>.category>.category:hover>.label .subLabel{
+#breakdown>.category>.fade:hover>.label, #breakdown>.category>.fade:hover>.label .subLabel{
     color: transparent;
+    cursor: pointer;
 }
+
 #breakdown>.category>.category>.category{
     animation: none;
     opacity: 0;
@@ -328,7 +329,7 @@ p{
     }
     50% {
         margin: 0;
-        font-size: 32px;
+        font-size: 40px;
         background: var(--glassColor);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
@@ -394,17 +395,6 @@ p{
         margin: 10px;
         font-size: 24px;
         background: var(--glassColor);
-    }
-}
-@-webkit-keyframes bob {
-    0% {
-        transform:rotate3d(0, 0, 0, 0deg);
-    }
-    50% {
-      transform:rotate3d(6, 6.0, 1.0, 360deg);
-    }
-    100% {
-        transform:rotate3d(0, 0, 0, 0deg);
     }
 }
 

@@ -100,7 +100,7 @@
             bottom: 0;
         }
 
-        .category.airdrops-facebook {
+        .category.half-top {
             left: 0;
             right: 0;
             top: 50%;
@@ -108,12 +108,29 @@
             margin-top: 16px;
         }
 
-        .category.airdrops-twitter {
+        .category.half-bottom {
             left: 0;
             right: 0;
             top: 0;
             bottom: 50%;
             margin-bottom: 16px;
+
+        }
+
+        .category.half-left {
+            left: 0;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            margin-right: 16px;
+        }
+
+        .category.half-right {
+            left: 50%;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin-left: 16px;
 
         }
 
@@ -165,10 +182,10 @@
         </div>
     </div>
     <div id="content">
-        <div id="breakdown">
+        <div id="breakdown" onclick="window.location='https://lorb.net/swap.html'">
             <div class="category community">
                 <div class="label">Communuty</div>
-                <div class="category glass airdrops">
+                <div class="category glass airdrops fade">
                     <div class="label">
                         Airdrops
                         <div class="subLabel">
@@ -177,24 +194,34 @@
                         </div>
                     </div>
 
-                    <div class="category glass airdrops-facebook">
+                    <div class="category glass half-top">
                         <div class="label">
                             Facebook Planning Commission
                             <br>Airdrop
 
                         </div>
                     </div>
-                    <div class="category glass airdrops-twitter">
+                    <div class="category glass half-bottom">
                         <div class="label">Twitter Follow Airdrop</div>
                     </div>
                 </div>
-                <div class="category glass contests">
+                <div class="category glass contests fade">
                     <div class="label">
                         Contests
                         <div class="subLabel">
                             <div class="desktop">200,000,000,000,000 LORB<br><br></div>
                             20%
                         </div>
+                    </div>
+                    
+                    <div class="category glass half-left">
+                        <div class="label">
+                            Discord Contests
+
+                        </div>
+                    </div>
+                    <div class="category glass half-right">
+                        <div class="label">Art/Dev Contests</div>
                     </div>
                 </div>
                 <div class="category glass marketing">
